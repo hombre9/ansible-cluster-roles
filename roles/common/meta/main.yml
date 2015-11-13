@@ -1,0 +1,14 @@
+# file: roles/common/meta/main.yml
+
+dependencies:
+  - { role: yum }
+  - { role: prerequisite }  
+  - { role: hostname }
+  - { role: timezone }
+  - { role: directories }
+  - { role: vim }
+  - { role: cron }
+  # - { role: fluentd }
+  - { role: tmpreaper }
+  # - { role: ssh }
+  # - { role: powerdns }

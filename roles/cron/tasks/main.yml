@@ -1,0 +1,17 @@
+# file: roles/cron/tasks/main.yml
+
+- name: Cron | Make sure cron is installed
+  yum: pkg=crontabs
+  when: ansible_os_family| lower == 'redhat'
+
+- name: Cron | Make sure cron is installed
+  apt: pkg=cron
+  when: ansible_os_family| lower == 'ubuntu'
+
+- name: Cron | Make sure cron is enabled
+  action: service name=crond state=restarted enabled=yes
+  when: ansible_os_family| lower == 'redhat'
+
+- name: Cron | Make sure cron is enabled
+  action: service name=cron state=restarted enabled=yes
+  when: ansible_os_family| lower == 'ubuntu'

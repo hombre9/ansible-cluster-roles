@@ -1,0 +1,22 @@
+---
+- name: Common | Check if mirror aliyun correctly set up
+  shell: cat /etc/yum.repos.d/CentOS-Base.repo | grep {{item}}
+  with_items:
+    - aliyun.com
+  register: mirror_check
+  when: ansible_os_family|lower == 'redhat'
+  ignore_errors: true
+
+- name: Change centos repo to aliyun mirror.
+  script: ./provision-centos6.sh
+  when: ansible_os_family|lower == 'redhat' and mirror_check|failed #and ansible_lsb.major_release|int == 6
+
+- name: Install EPEL repo.
+  yum:
+    name: "{{ epel_repo_url }}"
+    state: present
+
+- name: Import EPEL GPG key.
+  rpm_key:
+    key: "{{ epel_repo_gpg_key_url }}"
+    state: present

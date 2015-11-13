@@ -1,0 +1,28 @@
+# file: vagrant.yml
+
+- name: Collecting facts
+  hosts: vagrant
+  gather_facts: yes
+
+- hosts: all
+  sudo: yes
+  roles:
+    - role: common
+      tags:
+        - common
+    # - role: security
+    #   tags:
+    #     - security
+    - role: supervisor
+      tags:
+        - supervisor
+    # - role: monit
+    #   tags:
+    #     - monit
+
+- hosts: zookeeper
+  sudo: yes
+  roles:
+  - role: zookeeper
+    tags:
+      - zookeeper

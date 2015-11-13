@@ -1,0 +1,8 @@
+# file: roles/zookeeper/tasks/dependencies.yml
+
+- name: Zookeeper | Make sure the zookeeper dependencies are installed
+  apt: pkg={{ item }}
+  when: ansible_os_family| lower == 'ubuntu'
+  with_items:
+    - pkg-config
+    - connect-proxy

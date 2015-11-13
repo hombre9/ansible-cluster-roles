@@ -1,0 +1,21 @@
+# file: roles/zookeeper/tasks/main.yml
+
+- name: Zookeeper | Make sure zookeeper is not running under supervisord
+  supervisorctl: name=zookeeper state=stopped
+
+- include: dependencies.yml
+- include: user.yml
+- include: install.yml
+- include: configure.yml
+- include: supervise_zookeeper.yml
+
+- name: Wait for Zookeeper to start
+  wait_for: host=127.0.0.1 port=2181 delay=5 state=present
+
+- name: Check that zookeeper started correctly
+  shell: echo ruok | nc 127.0.0.1 2181
+  register: zk_ruok
+
+- assert:
+    that:
+      - "'imok' in zk_ruok.stdout"

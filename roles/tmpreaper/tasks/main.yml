@@ -1,0 +1,4 @@
+# file: roles/tmpreaper/tasks/main.yml
+
+- include: ubuntu.yml
+  when: ansible_os_family| lower == 'ubuntu'

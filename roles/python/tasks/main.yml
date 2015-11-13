@@ -1,0 +1,42 @@
+# file: roles/python/tasks/main.yml
+
+- name: Python | Make sure python packages are installed
+  yum: name={{ item }} state=present
+  when: ansible_os_family| lower == 'redhat'
+  with_items:
+    - libevent-devel
+    - python
+    # - python-setuptools
+    - python-devel
+    - python-pip
+
+- name: Python | Make sure python packages are installed
+  apt: pkg={{ item }}
+  when: ansible_os_family| lower == 'ubuntu'
+  with_items:
+    - cython
+    - libevent-dev
+    - python
+    - python3
+    - python-dev
+
+- name: Python | Fix error for pkg_resources.DistributionNotFound meld3 0.6.5
+  command: "{{ item }}"
+  with_items:
+    # - curl https://bootstrap.pypa.io/ez_setup.py | sudo python
+    - pip install setuptools --upgrade
+    - touch /tmp/fix_pip_meld3_error
+  args:
+    creates: /tmp/fix_pip_meld3_error
+
+# Ubuntu's python-setuptools, python-pip and python-virtualenv packages are broken
+- name: Python | Get the setuptools install-script
+  get_url: dest=/tmp url=http://python-distribute.org/distribute_setup.py mode=0644
+  when: ansible_os_family| lower == 'ubuntu'
+
+- name: Python | Make sure pip is installed (from script)
+  shell: python distribute_setup.py && /usr/local/bin/easy_install pip chdir=/tmp
+  when: ansible_os_family| lower == 'ubuntu'
+
+- name: Python | Make sure virtualenv is installed
+  pip: name=virtualenv

@@ -1,0 +1,13 @@
+# file: roles/directories/tasks/main.yml
+
+directories_default:
+  - path: /data
+    owner: root
+    group: root
+    mode: '0755'
+
+directories_additional:
+  - path: /data/logs
+    owner: root
+    group: root
+    mode: '0755'
