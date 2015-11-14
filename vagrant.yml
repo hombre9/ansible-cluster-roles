@@ -26,3 +26,24 @@
   - role: zookeeper
     tags:
       - zookeeper
+
+- hosts: storm
+  sudo: yes
+  roles:
+    - role: storm
+      tags:
+        - storm
+
+- hosts: storm_nimbus
+  sudo: yes
+  roles:
+    - role: storm_nimbus
+      tags:
+        - storm
+
+- hosts: storm_supervisor
+  sudo: yes
+  roles:
+    - role: storm_supervisor
+      tags:
+        - storm

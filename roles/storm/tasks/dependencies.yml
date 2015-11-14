@@ -1,0 +1,17 @@
+# file: roles/storm_common/tasks/dependencies.yml
+
+- name: Storm | Make sure the storm dependencies are installed
+  yum: pkg={{ item }} state=present
+  when: ansible_os_family|lower == 'redhat'
+  with_items:
+    - unzip
+    # - boost-devel
+
+- name: Storm | Make sure the storm dependencies are installed
+  apt: pkg={{ item }}
+  when: ansible_os_family|lower == 'ubuntu'
+  with_items:
+    - unzip
+    - libboost-all-dev
+    - libboost-dev
+    - pkg-config
