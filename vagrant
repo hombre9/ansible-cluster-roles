@@ -1,5 +1,11 @@
 [v1]
-vagrant1 ansible_ssh_host=127.0.0.1 ansible_ssh_user=vagrant ansible_ssh_port=2222
+node-1 ansible_ssh_host=192.168.5.100 ansible_ssh_user=vagrant ansible_ssh_port=22 zookeeper_id=1
+node-2 ansible_ssh_host=192.168.5.101 ansible_ssh_user=vagrant ansible_ssh_port=22 zookeeper_id=2
+node-3 ansible_ssh_host=192.168.5.102 ansible_ssh_user=vagrant ansible_ssh_port=22 zookeeper_id=3
+
+[v1:vars]
+
+
 
 [zookeeper:children]
 v1
