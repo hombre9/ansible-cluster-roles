@@ -8,7 +8,7 @@ zookeeper_gid: 3040
 
 zookeeper_id: 1
 
-zookeeper_data_dir: /opt/zookeeper
+zookeeper_data_dir: /data/zookeeper
 zookeeper_client_port: 2181
 zookeeper_tick_time: 2000
 zookeeper_init_limit: 10

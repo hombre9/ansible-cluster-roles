@@ -1,9 +1,9 @@
 [node-1]
-node-1 ansible_ssh_host=192.168.5.100 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=1
+node-1 ansible_ssh_host=192.168.5.100 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=1 kafka_server_broker_id=1
 [node-2]
-node-2 ansible_ssh_host=192.168.5.101 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=2
+node-2 ansible_ssh_host=192.168.5.101 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=2 kafka_server_broker_id=2
 [node-3]
-node-3 ansible_ssh_host=192.168.5.102 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=3
+node-3 ansible_ssh_host=192.168.5.102 ansible_ssh_user=vagrant ansible_ssh_password=vagrant zookeeper_id=3 kafka_server_broker_id=3
 
 [nodes]
 node-1
@@ -15,6 +15,9 @@ node-3
 [zookeeper:children]
 nodes
 
+# ---- Kafka
+[kafka:children]
+nodes
 
 # ---- Storm
 [storm_nimbus:children]

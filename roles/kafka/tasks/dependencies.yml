@@ -1,0 +1,10 @@
+# file: roles/kafka/tasks/dependencies.yml
+
+- name: Kafka | Make sure the kafka dependencies are installed
+  apt: pkg={{ item }}
+  when: ansible_os_family| lower == 'ubuntu'
+  with_items:
+    - git
+    - libboost-all-dev
+    - libboost-dev
+    - pkg-config

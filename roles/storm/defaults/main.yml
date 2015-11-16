@@ -19,6 +19,6 @@ storm_supervisor_slots_ports:
   - "6701"
   - "6702"
   - "6703"
-storm_local_dir: /app/storm
+storm_local_dir: /data/storm
 storm_drpc_servers:
   - "localhost"

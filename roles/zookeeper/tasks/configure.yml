@@ -1,7 +1,7 @@
 # file: roles/zookeeper/tasks/configure.yml
 
 - name: Zookeeper | Update the zookeeper configuration
-  template: src=usr_local_etc_zookeeper_conf_zoo.cfg.j2 dest=/usr/local/etc/zookeeper/conf/zoo.cfg owner={{ zookeeper_user }} group={{ zookeeper_group }} mode=0644
+  template: src=usr_local_etc_zookeeper_conf_zoo.cfg.j2 dest=/opt/zookeeper/conf/zoo.cfg owner={{ zookeeper_user }} group={{ zookeeper_group }} mode=0644
   notify:
     - restart zookeeper
 

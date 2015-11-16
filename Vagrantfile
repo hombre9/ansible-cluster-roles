@@ -25,6 +25,9 @@ Vagrant.configure(2) do |config|
 
       host.vm.network :private_network, ip: ip
       host.vm.hostname = short_name
+      if short_name=="node-1"
+        host.vm.network "forwarded_port", guest: 8080, host: 8080
+      end
       host.vm.provider :virtualbox do |vb|
         vb.customize ["modifyvm", :id, "--memory", memory_mb]
       end

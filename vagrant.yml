@@ -13,37 +13,47 @@
     # - role: security
     #   tags:
     #     - security
-    - role: supervisor
-      tags:
-        - supervisor
+    # - role: supervisor
+    #   tags:
+    #     - supervisor
     # - role: monit
     #   tags:
     #     - monit
 
-- hosts: zookeeper
-  sudo: yes
-  roles:
-  - role: zookeeper
-    tags:
-      - zookeeper
+# Zookeeper cluster deployment
+# - hosts: zookeeper
+#   sudo: yes
+#   roles:
+#   - role: zookeeper
+#     tags:
+#       - zookeeper
 
-- hosts: storm
+# Kafka cluster deployment
+- hosts: kafka
   sudo: yes
   roles:
-    - role: storm
+    - role: kafka
       tags:
-        - storm
+        - kafka
 
-- hosts: storm_nimbus
-  sudo: yes
-  roles:
-    - role: storm_nimbus
-      tags:
-        - storm
-
-- hosts: storm_supervisor
-  sudo: yes
-  roles:
-    - role: storm_supervisor
-      tags:
-        - storm
+# Storm cluster deployment
+# - hosts: storm
+#   sudo: yes
+#   roles:
+#     - role: storm
+#       tags:
+#         - storm
+#
+# - hosts: storm_nimbus
+#   sudo: yes
+#   roles:
+#     - role: storm_nimbus
+#       tags:
+#         - storm
+#
+# - hosts: storm_supervisor
+#   sudo: yes
+#   roles:
+#     - role: storm_supervisor
+#       tags:
+#         - storm

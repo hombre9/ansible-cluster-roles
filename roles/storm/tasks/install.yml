@@ -3,14 +3,14 @@
 - name: Storm | Download the storm source zip in /tmp if not yet present
   command: wget {{ storm_mirror }}/apache/storm/apache-storm-{{ storm_version }}/apache-storm-{{ storm_version }}.zip chdir=/tmp creates=/tmp/apache-storm-{{ storm_version }}.zip
 
-- name: Storm | Unzip the storm source in /usr/local/etc
-  command: unzip /tmp/apache-storm-{{ storm_version }}.zip chdir=/usr/local/etc creates=/usr/local/etc/apache-storm-{{ storm_version }}
+- name: Storm | Unzip the storm source in /opt
+  command: unzip /tmp/apache-storm-{{ storm_version }}.zip chdir=/opt creates=/opt/apache-storm-{{ storm_version }}
 
 - name: Storm | Update the storm install permissions
-  file: path=/usr/local/etc/apache-storm-{{ storm_version }} owner={{ storm_user }} group={{ storm_group }} state=directory recurse=yes
+  file: path=/opt/apache-storm-{{ storm_version }} owner={{ storm_user }} group={{ storm_group }} state=directory recurse=yes
 
 - name: Storm | Update the symbolic link to the storm install
-  file: path=/usr/local/etc/storm src=/usr/local/etc/apache-storm-{{ storm_version }} state=link force=yes
+  file: path=/opt/storm src=/opt/apache-storm-{{ storm_version }} state=link force=yes
 
 - name: Storm | Make sure the local working directory for storm is present
   file: path={{ storm_local_dir }} owner={{ storm_user }} group={{ storm_group }} mode=0750 state=directory
