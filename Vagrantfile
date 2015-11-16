@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
   # Use the same key for each machine
   config.ssh.insert_key = false
   config.vm.box = "chef/centos-6.6"
+  config.vm.box = "centos-6.7-x86_64"
 
   memory_mb = 256
 
