@@ -1,0 +1,7 @@
+# file: roles/cassandra/meta/main.yml
+
+dependencies:
+  - { role: hostname }
+  - { role: python }
+  - { role: jdk }
+  - { role: supervisor }

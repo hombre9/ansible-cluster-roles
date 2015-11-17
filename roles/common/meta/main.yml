@@ -2,11 +2,10 @@
 
 dependencies:
   - { role: yum }
-  - { role: prerequisite }  
+  - { role: prerequisite }
   - { role: hostname }
   - { role: timezone }
   - { role: directories }
-  - { role: vim }
   - { role: cron }
   # - { role: fluentd }
   - { role: tmpreaper }

@@ -21,12 +21,12 @@
     #     - monit
 
 # Zookeeper cluster deployment
-# - hosts: zookeeper
-#   sudo: yes
-#   roles:
-#   - role: zookeeper
-#     tags:
-#       - zookeeper
+- hosts: zookeeper
+  sudo: yes
+  roles:
+  - role: zookeeper
+    tags:
+      - zookeeper
 
 # Kafka cluster deployment
 - hosts: kafka
@@ -37,23 +37,23 @@
         - kafka
 
 # Storm cluster deployment
-# - hosts: storm
-#   sudo: yes
-#   roles:
-#     - role: storm
-#       tags:
-#         - storm
-#
-# - hosts: storm_nimbus
-#   sudo: yes
-#   roles:
-#     - role: storm_nimbus
-#       tags:
-#         - storm
-#
-# - hosts: storm_supervisor
-#   sudo: yes
-#   roles:
-#     - role: storm_supervisor
-#       tags:
-#         - storm
+- hosts: storm
+  sudo: yes
+  roles:
+    - role: storm
+      tags:
+        - storm
+
+- hosts: storm_nimbus
+  sudo: yes
+  roles:
+    - role: storm_nimbus
+      tags:
+        - storm
+
+- hosts: storm_supervisor
+  sudo: yes
+  roles:
+    - role: storm_supervisor
+      tags:
+        - storm

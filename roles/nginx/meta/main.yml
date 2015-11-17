@@ -1,0 +1,4 @@
+# file: roles/nginx/meta/main.yml
+
+dependencies:
+  - { role: hostname }
