@@ -19,6 +19,10 @@ nodes
 [kafka:children]
 nodes
 
+# ---- Redis
+[redis:children]
+node-1
+
 # ---- Storm
 [storm_nimbus:children]
 node-1

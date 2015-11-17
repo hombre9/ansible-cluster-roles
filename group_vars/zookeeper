@@ -1,4 +1,5 @@
-# Variables for zookeeper group
+# Variables for zookeeper cluster
+
 zookeeper_servers:
   1: 192.168.5.100
   2: 192.168.5.101

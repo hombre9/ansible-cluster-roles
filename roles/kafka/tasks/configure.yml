@@ -3,4 +3,4 @@
 - name: Kafka | Update the kafka configuration
   template: src=usr_local_etc_kafka_config_server.properties.j2 dest=/opt/kafka/config/server.properties owner={{ kafka_user }} group={{ kafka_group }} mode=0644
   notify:
-    - restart supervisor
+    - restart kafka

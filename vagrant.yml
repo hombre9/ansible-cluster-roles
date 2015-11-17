@@ -10,15 +10,6 @@
     - role: common
       tags:
         - common
-    # - role: security
-    #   tags:
-    #     - security
-    # - role: supervisor
-    #   tags:
-    #     - supervisor
-    # - role: monit
-    #   tags:
-    #     - monit
 
 # Zookeeper cluster deployment
 - hosts: zookeeper
@@ -35,6 +26,20 @@
     - role: kafka
       tags:
         - kafka
+
+# Redis cluster deployment
+- hosts: redis
+  sudo: yes
+  vars:
+    - redis_travis_ci: true
+  roles:
+    - redis
+
+# Redis sentinel cluster deployment
+- hosts: redis_sentinel
+  sudo: yes
+  roles:
+    - redis
 
 # Storm cluster deployment
 - hosts: storm
