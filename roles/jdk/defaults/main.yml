@@ -3,7 +3,7 @@
 #
 # defaults file
 #
-jdk_mirrors: http://nexus.gs.9188.com/nexus/content/repositories/thirdparty/java/jdk
+jdk_mirrors: http://localhost:8081/nexus/content/repositories/thirdparty/java/jdk
 
 oracle_java_dir_source: '/usr/local/src'
 
